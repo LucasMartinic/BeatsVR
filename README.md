@@ -1,3 +1,3 @@
 # BeatsVR
 
-Create beats in VR!
+Make in VR!
