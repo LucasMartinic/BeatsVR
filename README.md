@@ -1,3 +1,3 @@
 # BeatsVR
 
-Make in VR!
+Make beatsss in VR!
