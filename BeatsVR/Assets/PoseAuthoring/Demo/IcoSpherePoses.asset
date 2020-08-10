@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d7005bbd0f6d5943ba9c4843ccf5dfa, type: 3}
+  m_Name: IcoSpherePoses
+  m_EditorClassIdentifier: 
+  _poses:
+  - pose:
+      relativeGripPos: {x: -0.0018907953, y: -0.020509832, z: -0.038862728}
+      relativeGripRot: {x: 0.70793253, y: 0.20166938, z: 0.034258556, w: -0.6760084}
+      handeness: 1
+      _bones:
+      - boneID: 2
+        rotation: {x: 0.13083696, y: 0.9717372, z: -0.01606958, w: 0.19583246}
+      - boneID: 4
+        rotation: {x: -0.0831579, y: 0.06448853, z: -0.06680589, w: 0.99220115}
+      - boneID: 5
+        rotation: {x: 0.0829011, y: -0.06253599, z: 0.027169172, w: 0.99422264}
+      - boneID: 6
+        rotation: {x: -0.13258457, y: 0.71870583, z: 0.66520137, w: 0.15293962}
+      - boneID: 7
+        rotation: {x: -0.026317844, y: 0.0033040289, z: -0.14773421, w: 0.98867136}
+      - boneID: 8
+        rotation: {x: -0.016722357, y: 0.024968307, z: -0.061614655, w: 0.9976475}
+      - boneID: 9
+        rotation: {x: -0.17854986, y: 0.68323916, z: 0.7068369, w: -0.04105901}
+      - boneID: 10
+        rotation: {x: -0.012704308, y: 0.00055806333, z: -0.31780022, w: 0.9480725}
+      - boneID: 11
+        rotation: {x: -0.053646978, y: -0.004024344, z: -0.10474167, w: 0.9930433}
+      - boneID: 12
+        rotation: {x: -0.2126435, y: 0.64447707, z: 0.7296194, w: -0.08418832}
+      - boneID: 13
+        rotation: {x: -0.04062123, y: -0.010116586, z: -0.38398984, w: 0.9223879}
+      - boneID: 14
+        rotation: {x: -0.013613028, y: -0.029649278, z: -0.19286308, w: 0.9806832}
+      - boneID: 16
+        rotation: {x: -0.23379001, y: 0.13723819, z: 0.95658773, w: 0.10699506}
+      - boneID: 17
+        rotation: {x: -0.05691362, y: 0.032946806, z: -0.21721661, w: 0.97390574}
+      - boneID: 18
+        rotation: {x: 0.0014052858, y: -0.048020694, z: -0.20073232, w: 0.97846746}
+    volume:
+      _startPoint: {x: 0, y: 0, z: 0}
+      _endPoint: {x: 0, y: 0, z: 0}
+      _angle: 0
+    ambydextrous: 0
+    handCanInvert: 0
+    maxDistance: 0.1
+  - pose:
+      relativeGripPos: {x: 0.007910272, y: -0.024725847, z: 0.032801874}
+      relativeGripRot: {x: -0.105985045, y: 0.5965065, z: 0.746739, w: -0.27445984}
+      handeness: 0
+      _bones:
+      - boneID: 2
+        rotation: {x: 0.21312132, y: 0.9554552, z: 0.036149096, w: 0.20094272}
+      - boneID: 4
+        rotation: {x: -0.08247031, y: 0.055903383, z: -0.16074172, w: 0.981955}
+      - boneID: 5
+        rotation: {x: 0.083251014, y: -0.06393733, z: 0.04465608, w: 0.9934723}
+      - boneID: 6
+        rotation: {x: -0.15592974, y: 0.7141998, z: 0.651997, w: 0.20125744}
+      - boneID: 7
+        rotation: {x: -0.026306285, y: 0.0035213004, z: -0.13965446, w: 0.9898446}
+      - boneID: 8
+        rotation: {x: -0.0164034, y: 0.026189758, z: 0.009702668, w: 0.9994753}
+      - boneID: 9
+        rotation: {x: -0.20244882, y: 0.67413944, z: 0.7027478, w: 0.103422076}
+      - boneID: 10
+        rotation: {x: -0.012350491, y: 0.0018740703, z: -0.21201988, w: 0.97718555}
+      - boneID: 11
+        rotation: {x: -0.048069045, y: -0.0014487267, z: -0.045818485, w: 0.9977915}
+      - boneID: 12
+        rotation: {x: -0.19675095, y: 0.6429098, z: 0.73330295, w: 0.10110803}
+      - boneID: 13
+        rotation: {x: -0.038315594, y: -0.0046369587, z: -0.2250169, w: 0.9735902}
+      - boneID: 14
+        rotation: {x: -0.010389527, y: -0.029653218, z: -0.123037726, w: 0.99190444}
+      - boneID: 16
+        rotation: {x: -0.023000771, y: 0.16711967, z: 0.958443, w: 0.2300634}
+      - boneID: 17
+        rotation: {x: -0.062055815, y: 0.029634245, z: -0.2834597, w: 0.9565153}
+      - boneID: 18
+        rotation: {x: 0.0006812188, y: -0.049172726, z: 0.013484601, w: 0.99869907}
+    volume:
+      _startPoint: {x: 0, y: 0, z: 0}
+      _endPoint: {x: 0, y: 0, z: 0}
+      _angle: 0
+    ambydextrous: 0
+    handCanInvert: 0
+    maxDistance: 0.1
