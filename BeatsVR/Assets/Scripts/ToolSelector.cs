@@ -20,10 +20,14 @@ public class ToolSelector : MonoBehaviour
     private Material initialMat;
     private int actualSound;
     private Material[] matArray;
+    private SoundSelector soundSelector;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         initialMat = hexagonRenderer.material;
+        soundSelector = beatTool.GetComponent<SoundSelector>();
     }
 
     void Update()
@@ -33,15 +37,15 @@ public class ToolSelector : MonoBehaviour
             thumbstickDir = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
             if(thumbstickDir != Vector2.zero)
             {
+                soundSelector.RotateTool(true);
                 Highlight(thumbstickDir);
                 if(!beatToolActive)
                     ActivateBeatTool();
             }
-
-            /*if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, OVRInput.Controller.LTouch) || thumbstickDir != Vector2.zero)
+            else
             {
-                ActivateBeatTool();
-            }*/
+                soundSelector.RotateTool(false);
+            }
             grabAmount = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
         }
         else if(hand == Hand.Right)
@@ -49,15 +53,15 @@ public class ToolSelector : MonoBehaviour
             thumbstickDir = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch);
             if (thumbstickDir != Vector2.zero)
             {
+                soundSelector.RotateTool(true);
                 Highlight(thumbstickDir);
                 if (!beatToolActive)
                     ActivateBeatTool();
             }
-
-            /*if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, OVRInput.Controller.LTouch) || thumbstickDir != Vector2.zero)
+            else
             {
-                ActivateBeatTool();
-            }*/
+                soundSelector.RotateTool(false);
+            }
             grabAmount = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch);
         }
         if (grabAmount >= grabThreshold)
@@ -72,7 +76,6 @@ public class ToolSelector : MonoBehaviour
         if(vec.y < 0)
         {
             angle = 360 - Vector2.Angle(Vector2.left, vec);
-
         }
         else
         {
@@ -114,6 +117,8 @@ public class ToolSelector : MonoBehaviour
             matArray[actualSound] = initialMat;
             hexagonRenderer.materials = matArray;
             GetComponent<OculusHaptics>().Vibrate(VibrationForce.Light);
+            soundSelector.SelectBeat(n);
+            PlayAudio(n);
         }
         actualSound = n;
         matArray[actualSound] = highlightMat;
@@ -132,5 +137,11 @@ public class ToolSelector : MonoBehaviour
         beatToolActive = true;
         beatTool.SetActive(true);
         handGO.SetActive(false);
+    }
+
+    void PlayAudio(int n)
+    {
+        audioSource.clip = soundSelector.beats[n].GetComponent<Sample>().clip;
+        audioSource.Play();
     }
 }
