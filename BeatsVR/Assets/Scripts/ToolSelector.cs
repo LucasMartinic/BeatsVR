@@ -82,7 +82,6 @@ public class ToolSelector : MonoBehaviour
             angle = Vector2.Angle(Vector2.left, vec);
 
         }
-        Debug.Log(angle);
         if (angle >= 0 && angle < 60)
         {
             ChooseSound(0);

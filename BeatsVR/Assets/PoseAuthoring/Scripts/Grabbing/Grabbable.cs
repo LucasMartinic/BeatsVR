@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Interaction
 {
@@ -23,7 +24,9 @@ namespace Interaction
         private Grabber _grabbedBy = null;
 
         private (Vector3, Quaternion)? desiredPhysicsPose;
-        
+
+        [SerializeField] UnityEvent onGrab;
+        [SerializeField] UnityEvent onRelease;
 
         public bool IsGrabbed
         {
@@ -80,6 +83,7 @@ namespace Interaction
             {
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
             }
+            onGrab.Invoke();
         }
 
 
@@ -95,6 +99,7 @@ namespace Interaction
             _grabbedBy = null;
             _grabbedCollider = null;
             desiredPhysicsPose = null;
+            onRelease.Invoke();
         }
 
 

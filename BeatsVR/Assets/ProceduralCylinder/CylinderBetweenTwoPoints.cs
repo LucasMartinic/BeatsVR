@@ -9,6 +9,8 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
     [SerializeField] private GameObject initialPoint;
     [SerializeField] private GameObject rightSphere;
     private GameObject cylinder;
+    public GameObject[] attachPoints = new GameObject[16];
+    [SerializeField] Beat beat;
 
     private void Start () {
         InstantiateCylinder(cylinderPrefab, initialPoint.transform.position, rightSphere.transform.position);
@@ -21,7 +23,11 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
     private void InstantiateCylinder(Transform cylinderPrefab, Vector3 beginPoint, Vector3 endPoint)
     {
         cylinder = Instantiate<GameObject>(cylinderPrefab.gameObject, Vector3.zero, Quaternion.identity);
+        cylinder.transform.SetParent(beat.transform);
         UpdateCylinderPosition(cylinder, beginPoint, endPoint);
+
+        CreateAttachPoints();
+        beat.cylinderObject = cylinder;
     }
 
     private void UpdateCylinderPosition(GameObject cylinder, Vector3 beginPoint, Vector3 endPoint)
@@ -34,5 +40,16 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
         Vector3 localScale = cylinder.transform.localScale;
         localScale.z = (endPoint - beginPoint).magnitude;
         cylinder.transform.localScale = localScale;
+    }
+
+    void CreateAttachPoints()
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            attachPoints[i] = new GameObject(i.ToString());
+            attachPoints[i].transform.SetParent(cylinder.transform);
+            attachPoints[i].transform.localPosition = Vector3.zero + new Vector3(0, 0, (0.4f) - (0.0533f * i));
+            attachPoints[i].transform.localRotation = cylinder.transform.localRotation;
+        }
     }
 }

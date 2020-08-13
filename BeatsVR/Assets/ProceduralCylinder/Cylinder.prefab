@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4336891886657806}
   - component: {fileID: 23540978941121274}
   - component: {fileID: 33585493074469276}
+  - component: {fileID: 3771684077264070040}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Beat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -78,4 +79,18 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137252091500694}
+  m_Mesh: {fileID: 4300000, guid: 230dbec269e128d47ab9a61d4b5f6d42, type: 2}
+--- !u!64 &3771684077264070040
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137252091500694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 230dbec269e128d47ab9a61d4b5f6d42, type: 2}
