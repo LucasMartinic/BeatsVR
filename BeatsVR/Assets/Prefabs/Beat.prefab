@@ -64,6 +64,38 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  beat: {fileID: 0}
+--- !u!1 &3298987808164943939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4529895793476219449}
+  m_Layer: 0
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4529895793476219449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298987808164943939}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.77400005, z: 0.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4453485198179617211}
+  m_Father: {fileID: 4453485198880538002}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4453485198179617212
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +108,7 @@ GameObject:
   - component: {fileID: 4453485198179617209}
   - component: {fileID: 4453485198179617210}
   m_Layer: 0
-  m_Name: Fill
+  m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,11 +122,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4453485198179617212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.77400005, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.180621, z: 0.9}
   m_Children: []
-  m_Father: {fileID: 4453485198880538002}
-  m_RootOrder: 2
+  m_Father: {fileID: 4529895793476219449}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4453485198179617209
 MeshFilter:
@@ -269,6 +301,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canMove: 1
   _physicsMove: 0
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4453485198859233942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +354,7 @@ Transform:
   m_Children:
   - {fileID: 4453485198859233943}
   - {fileID: 1403390084864810693}
-  - {fileID: 4453485198179617211}
+  - {fileID: 4529895793476219449}
   - {fileID: 408394315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -354,8 +392,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  distance: {x: 0, y: 0, z: 0}
-  proCylinder: {fileID: 408394314}
+  cylinderProcedural: {fileID: 0}
+  cylinderObject: {fileID: 0}
 --- !u!1 &4655610141387772108
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +520,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canMove: 1
   _physicsMove: 0
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4655610141387772105
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
     [SerializeField] private GameObject initialPoint;
     [SerializeField] private GameObject rightSphere;
     private GameObject cylinder;
-    public GameObject[] attachPoints = new GameObject[16];
+    public GameObject[] attachPoints = new GameObject[17];
     [SerializeField] Beat beat;
 
     private void Start () {
@@ -44,7 +44,7 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
 
     void CreateAttachPoints()
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 17; i++)
         {
             attachPoints[i] = new GameObject(i.ToString());
             attachPoints[i].transform.SetParent(cylinder.transform);

@@ -14,10 +14,13 @@ public class Beat : MonoBehaviour
     Vector3 distance;
     [SerializeField] CylinderBetweenTwoPoints cylinderProcedural;
     [HideInInspector]public GameObject cylinderObject;
+    int currentBeat;
+    AudioSource audioSource;
 
     // Update is called once per frame
     void Update()
     {
+        audioSource = GetComponent<AudioSource>();
         if (BPM._beatFull)
         {
             barsCompleted++;
@@ -35,7 +38,18 @@ public class Beat : MonoBehaviour
         distance = blue.transform.position - yellow.transform.position;
         fillEfect.transform.up = distance;
         filler += Time.deltaTime;
-        fillEfect.transform.position = Vector3.Lerp(yellow.transform.position, blue.transform.position, filler * BPM.instance._bpm /60 * (bars * 1.0f));
+        fillEfect.transform.position = Vector3.Lerp(cylinderProcedural.attachPoints[0].transform.position, cylinderProcedural.attachPoints[16].transform.position, filler * BPM.instance._bpm /60 * (bars * 1.0f));
+        if(Vector3.Distance(cylinderProcedural.attachPoints[currentBeat].transform.position, fillEfect.transform.position) < 0.01f)
+        {
+            Debug.Log(currentBeat);
+            if(beats[currentBeat] != null)
+                audioSource.PlayOneShot(beats[currentBeat].GetComponent<Sample>().clip);
+            currentBeat++;
+            if(currentBeat == 16)
+            {
+                currentBeat = 0;
+            }
+        }
     }
 
     public void OnTrigger(Vector3 contactPos, GameObject obj)
