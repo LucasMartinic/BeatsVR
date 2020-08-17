@@ -140,7 +140,7 @@ public class ToolSelector : MonoBehaviour
 
     void PlayAudio(int n)
     {
-        audioSource.clip = soundSelector.beats[n].GetComponent<Sample>().clip;
+        audioSource.clip = soundSelector.beats[n].GetComponent<Sample>().Clip();
         audioSource.Play();
     }
 }

@@ -37,7 +37,7 @@ public class Beat : MonoBehaviour
     void PlayNextSound()
     {
         if (beats[barsCompleted] != null)
-            audioSource.PlayOneShot(beats[barsCompleted].GetComponent<Sample>().clip);
+            audioSource.PlayOneShot(beats[barsCompleted].GetComponent<Sample>().Clip());
     }
 
     void FillMeter()
