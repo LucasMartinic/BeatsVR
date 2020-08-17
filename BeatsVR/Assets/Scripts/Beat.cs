@@ -9,8 +9,8 @@ public class Beat : MonoBehaviour
     [SerializeField] GameObject fillEfect;
     [SerializeField] int bars = 1;
     [SerializeField] GameObject[] beats = new GameObject[16];
-    float filler = 0;
-    int barsCompleted;
+    public float filler = 0;
+    public int barsCompleted;
     Vector3 distance;
     [SerializeField] CylinderBetweenTwoPoints cylinderProcedural;
     [HideInInspector]public GameObject cylinderObject;
@@ -21,8 +21,9 @@ public class Beat : MonoBehaviour
     void Update()
     {
         audioSource = GetComponent<AudioSource>();
-        if (BPM._beatFull)
+        if (BPM._beatD16)
         {
+            PlayNextSound();
             barsCompleted++;
             if(barsCompleted >= bars)
             {
@@ -33,13 +34,19 @@ public class Beat : MonoBehaviour
         FillMeter();
     }
 
+    void PlayNextSound()
+    {
+        if (beats[barsCompleted] != null)
+            audioSource.PlayOneShot(beats[barsCompleted].GetComponent<Sample>().clip);
+    }
+
     void FillMeter()
     {
         distance = blue.transform.position - yellow.transform.position;
         fillEfect.transform.up = distance;
         filler += Time.deltaTime;
-        fillEfect.transform.position = Vector3.Lerp(cylinderProcedural.attachPoints[0].transform.position, cylinderProcedural.attachPoints[16].transform.position, filler * BPM.instance._bpm /60 * (bars * 1.0f));
-        if(Vector3.Distance(cylinderProcedural.attachPoints[currentBeat].transform.position, fillEfect.transform.position) < 0.01f)
+        fillEfect.transform.position = Vector3.Lerp(cylinderProcedural.attachPoints[0].transform.position, cylinderProcedural.attachPoints[16].transform.position, filler * BPM.instance._bpm / 60.0f);
+        /*if(Vector3.Distance(cylinderProcedural.attachPoints[currentBeat].transform.position, fillEfect.transform.position) < 0.01f)
         {
             Debug.Log(currentBeat);
             if(beats[currentBeat] != null)
@@ -49,7 +56,7 @@ public class Beat : MonoBehaviour
             {
                 currentBeat = 0;
             }
-        }
+        }*/
     }
 
     public void OnTrigger(Vector3 contactPos, GameObject obj)

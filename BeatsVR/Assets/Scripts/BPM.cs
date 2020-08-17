@@ -6,10 +6,10 @@ public class BPM : MonoBehaviour
 {
     public static BPM instance;
     public float _bpm;
-    private float _beatInterval, _beatIntervalD8;
-    private float _beatTimer, _beatTimerD8;
-    public static bool _beatFull, _beatD8;
-    public static int _beatCountFull, _beatCountD8;
+    private float _beatInterval, _beatIntervalD16;
+    private float _beatTimer, _beatTimerD16;
+    public static bool _beatFull, _beatD16;
+    public static int _beatCountFull, _beatCountD16;
     bool started;
 
     private void Awake()
@@ -55,15 +55,15 @@ public class BPM : MonoBehaviour
             Debug.Log("FullBeat");
         }
         //divided beat count
-        _beatD8 = false;
-        _beatIntervalD8 = _beatInterval / 8;
-        _beatTimerD8 += Time.deltaTime;
-        if(_beatTimerD8 >= _beatIntervalD8)
+        _beatD16 = false;
+        _beatIntervalD16 = _beatInterval / 16;
+        _beatTimerD16 += Time.deltaTime;
+        if(_beatTimerD16 >= _beatIntervalD16)
         {
-            _beatTimerD8 -= _beatIntervalD8;
-            _beatD8 = true;
-            _beatCountD8++;
-            Debug.Log("D8");
+            _beatTimerD16 -= _beatIntervalD16;
+            _beatD16 = true;
+            _beatCountD16++;
+            Debug.Log("D16");
         }
     }
 }

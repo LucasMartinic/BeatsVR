@@ -4151,7 +4151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2c5fc693bd2542972ad0ef7b14f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bpm: 20
+  _bpm: 60
 --- !u!1 &234916790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6731,7 +6731,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -22449,6 +22449,11 @@ PrefabInstance:
       propertyPath: fillEfect
       value: 
       objectReference: {fileID: 2047653392}
+    - target: {fileID: 4453485198880538001, guid: 39db7e2f39c66674e98624b1df63e804,
+        type: 3}
+      propertyPath: bars
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4453485198880538002, guid: 39db7e2f39c66674e98624b1df63e804,
         type: 3}
       propertyPath: m_LocalPosition.x
