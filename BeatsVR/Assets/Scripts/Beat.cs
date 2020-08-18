@@ -9,13 +9,19 @@ public class Beat : MonoBehaviour
     [SerializeField] GameObject fillEfect;
     [SerializeField] int bars = 1;
     [SerializeField] GameObject[] beats = new GameObject[16];
-    public float filler = 0;
-    public int barsCompleted;
+    float filler = 0;
+    int barsCompleted;
     Vector3 distance;
     [SerializeField] CylinderBetweenTwoPoints cylinderProcedural;
     [HideInInspector]public GameObject cylinderObject;
     int currentBeat;
     AudioSource audioSource;
+
+    public bool hasBeatBefore;
+    public bool hasBeatAfter;
+    private Beat beforeBeat;
+    private Beat afterBeat;
+
 
     // Update is called once per frame
     void Update()
@@ -92,5 +98,39 @@ public class Beat : MonoBehaviour
         }
 
         return nearestPos;
+    }
+
+    public void ConnectBefore(Beat beat)
+    {
+        if (!hasBeatBefore)
+        {
+            hasBeatBefore = true;
+            beforeBeat = beat;
+        }
+    }
+
+    public void DisconnectBefore(Beat beat)
+    {
+        if(beforeBeat == beat)
+        {
+            hasBeatBefore = false;
+        }
+    }
+
+    public void ConnectAfter(Beat beat)
+    {
+        if (!hasBeatAfter)
+        {
+            hasBeatAfter = true;
+            afterBeat = beat;
+        }
+    }
+
+    public void DisconnectAfter(Beat beat)
+    {
+        if(afterBeat == beat)
+        {
+            hasBeatAfter = false;
+        }
     }
 }
