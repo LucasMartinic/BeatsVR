@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: f8370227d0535b544bd95d5adc3eb117, type: 3}
+  attached: 0
 --- !u!114 &-39673798924455719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canMove: 1
   _physicsMove: 0
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []

@@ -83,7 +83,8 @@ namespace Interaction
             {
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
             }
-            onGrab.Invoke();
+            if(onGrab != null)
+                onGrab.Invoke();
         }
 
 
@@ -99,7 +100,8 @@ namespace Interaction
             _grabbedBy = null;
             _grabbedCollider = null;
             desiredPhysicsPose = null;
-            onRelease.Invoke();
+            if(onRelease != null)
+                onRelease.Invoke();
         }
 
 

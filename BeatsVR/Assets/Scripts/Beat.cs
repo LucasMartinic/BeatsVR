@@ -15,23 +15,23 @@ public class Beat : MonoBehaviour
     public AudioClip Clip()
     {
         if(attached)
-            StartCoroutine(Grow());
+            StartCoroutine(CoGrow(1));
         return clip;
     }
 
-    IEnumerator Grow()
+    IEnumerator CoGrow(float vel)
     {
         float counter = 0;
-        for (int i = 0; i < 50; i++)
+        while(counter <= BPM.instance._bpm / 60)
         {
-            Vector3 targetScale = initialScale + new Vector3(0.3f, 0.3f, 0.3f);
+            Vector3 targetScale = initialScale + Vector3.one * 0.6f;
             transform.localScale = Vector3.Lerp(targetScale, initialScale, counter);
             yield return new WaitForEndOfFrame();
-            counter += Time.deltaTime * BPM.instance._bpm / 60;
+            counter += vel * Time.deltaTime * BPM.instance._bpm / 60;
         }
     }
 
-    public void DestroyAfter(int n)
+    public void DestroyAfter(float n)
     {
         Destroy(gameObject, n);
     }
@@ -47,5 +47,6 @@ public class Beat : MonoBehaviour
     public void Attach()
     {
         attached = true;
+        StartCoroutine(CoGrow(2));
     }
 }

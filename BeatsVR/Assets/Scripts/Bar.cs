@@ -8,6 +8,7 @@ public class Bar : MonoBehaviour
     [SerializeField] int bars = 1;
     [SerializeField] GameObject[] beats = new GameObject[16];
     float filler = 0;
+    MeshRenderer fillRenderer;
     public int barsCompleted;
     Vector3 distance;
     [SerializeField] CylinderBetweenTwoPoints cylinderProcedural;
@@ -21,11 +22,13 @@ public class Bar : MonoBehaviour
     bool single = true;
 
     public bool myTurn;
+    bool readyToFill;
     bool firstFrame = true;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        fillRenderer = fillEfect.GetComponentInChildren<MeshRenderer>();
     }
 
     void Update()
@@ -38,7 +41,7 @@ public class Bar : MonoBehaviour
             CheckIfCandidate();
         }
 
-        if(myTurn)
+        if(myTurn && readyToFill)
         {
             FillMeter();
             if (firstFrame) return;
@@ -54,6 +57,10 @@ public class Bar : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            fillRenderer.enabled = false;
+        }
 
     }
 
@@ -62,6 +69,11 @@ public class Bar : MonoBehaviour
         if (single)
         {
             myTurn = true;
+            readyToFill = true;
+        }
+        if(!single && myTurn)
+        {
+            readyToFill = true;
         }
     }
 
@@ -78,7 +90,9 @@ public class Bar : MonoBehaviour
 
     void FinishTurn()
     {
+        readyToFill = false;
         myTurn = false;
+        fillRenderer.enabled = false;
         if (hasBarAfter && afterBar!= null)
         {
             myTurn = false;
@@ -106,7 +120,6 @@ public class Bar : MonoBehaviour
     {
         filler = 0;
         barsCompleted = 0;
-        fillEfect.transform.localPosition = new Vector3(0f, 0.774f, 0.18f);
     }
 
     Bar GetFirstBar(Bar currentBar)
@@ -125,6 +138,8 @@ public class Bar : MonoBehaviour
 
     void FillMeter()
     {
+        if (!fillRenderer.enabled)
+            fillRenderer.enabled = true;
         distance = blue.transform.position - yellow.transform.position;
         fillEfect.transform.up = distance;
         filler += Time.deltaTime;
@@ -182,6 +197,7 @@ public class Bar : MonoBehaviour
         {
             hasBarBefore = false;
             afterBar = null;
+            CheckIfAnyBarHasTurn(false);
         }
     }
 
@@ -201,6 +217,19 @@ public class Bar : MonoBehaviour
         {
             hasBarAfter = false;
             afterBar = null;
+            CheckIfAnyBarHasTurn(true);
+        }
+    }
+
+    void CheckIfAnyBarHasTurn(bool forward)
+    {
+        if (forward)
+        {
+
+        }
+        else
+        {
+
         }
     }
 }
