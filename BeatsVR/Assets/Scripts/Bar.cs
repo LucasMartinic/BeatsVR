@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
@@ -22,7 +20,6 @@ public class Bar : MonoBehaviour
     public Bar afterBar;
 
     public bool myTurn;
-    public bool finishedTurn;
     bool firstFrame = true;
 
     private void Start()
@@ -48,7 +45,7 @@ public class Bar : MonoBehaviour
                 }
             }
         }
-        else if(myTurn || !finishedTurn)
+        else if(myTurn)
         {
             FillMeter();
             if (firstFrame) return;
@@ -64,7 +61,7 @@ public class Bar : MonoBehaviour
                 }
             }
         }
-        else if(!myTurn && BPM._beatFull)
+        else if(!myTurn && !hasBarBefore && !hasBarAfter && BPM._beatFull)
         {
             myTurn = true;
         }
@@ -83,7 +80,6 @@ public class Bar : MonoBehaviour
 
     void FinishTurn()
     {
-        finishedTurn = true;
         if (hasBarAfter)
         {
             myTurn = false;
@@ -99,7 +95,6 @@ public class Bar : MonoBehaviour
     public void SetTurn(bool b)
     {
         myTurn = b;
-        finishedTurn = false;
         firstFrame = true;
     }
 

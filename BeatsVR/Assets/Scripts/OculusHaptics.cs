@@ -27,7 +27,10 @@ public class OculusHaptics : MonoBehaviour
 
     private void Start()
     {
-        InitializeOVRHaptics();
+        if (OVRManager.isHmdPresent)
+        {
+            InitializeOVRHaptics();
+        }
     }
 
     private void InitializeOVRHaptics()
@@ -52,7 +55,10 @@ public class OculusHaptics : MonoBehaviour
 
     void OnEnable()
     {
-        InitializeOVRHaptics();
+        if (OVRManager.isHmdPresent)
+        {
+            InitializeOVRHaptics();
+        }
     }
 
     public void Vibrate(VibrationForce vibrationForce)
