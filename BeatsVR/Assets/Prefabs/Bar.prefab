@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  beat: {fileID: 4453485198880538001}
+  bar: {fileID: 4453485198880538001}
 --- !u!1 &3298987808164943939
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 4453485198179617212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.180621, z: 0.9}
+  m_LocalScale: {x: 0.76949996, y: 0.15443096, z: 0.76949996}
   m_Children: []
   m_Father: {fileID: 4529895793476219449}
   m_RootOrder: 0
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 4453485198880538001}
   - component: {fileID: 174929264}
   m_Layer: 0
-  m_Name: Beat
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,10 +408,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  barsCompleted: 0
   cylinderProcedural: {fileID: 408394314}
   cylinderObject: {fileID: 0}
-  hasBeatBefore: 0
-  hasBeatAfter: 0
+  hasBarBefore: 0
+  hasBarAfter: 0
+  beforeBar: {fileID: 0}
+  afterBar: {fileID: 0}
+  myTurn: 0
+  finishedTurn: 0
 --- !u!82 &174929264
 AudioSource:
   m_ObjectHideFlags: 0

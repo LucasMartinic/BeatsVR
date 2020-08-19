@@ -15,7 +15,7 @@ public class Blue : MonoBehaviour
     {
         if (other.CompareTag("Yellow"))
         {
-            bar.ConnectAfter(bar);
+            bar.ConnectAfter(other.GetComponentInParent<Bar>());
         }
     }
 
@@ -23,7 +23,7 @@ public class Blue : MonoBehaviour
     {
         if (other.CompareTag("Yellow"))
         {
-            bar.DisconnectAfter(bar);
+            bar.DisconnectAfter(other.GetComponentInParent<Bar>());
         }
     }
 }

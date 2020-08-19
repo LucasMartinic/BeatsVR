@@ -52,7 +52,7 @@ public class BPM : MonoBehaviour
             _beatTimer -= _beatInterval;
             _beatFull = true;
             _beatCountFull++;
-            Debug.Log("FullBeat");
+            //Debug.Log("FullBeat");
         }
         //divided beat count
         _beatD16 = false;
@@ -63,7 +63,7 @@ public class BPM : MonoBehaviour
             _beatTimerD16 -= _beatIntervalD16;
             _beatD16 = true;
             _beatCountD16++;
-            Debug.Log("D16");
+            //Debug.Log("D16");
         }
     }
 }
