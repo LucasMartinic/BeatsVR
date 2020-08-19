@@ -7650,11 +7650,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1403390084864810693, guid: 39db7e2f39c66674e98624b1df63e804,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.089
-      objectReference: {fileID: 0}
     - target: {fileID: 4453485198880538002, guid: 39db7e2f39c66674e98624b1df63e804,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7714,11 +7709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beat (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529895793476219449, guid: 39db7e2f39c66674e98624b1df63e804,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.089
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39db7e2f39c66674e98624b1df63e804, type: 3}
@@ -16085,11 +16075,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1403390084864810693, guid: 39db7e2f39c66674e98624b1df63e804,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.089
-      objectReference: {fileID: 0}
     - target: {fileID: 4453485198880538002, guid: 39db7e2f39c66674e98624b1df63e804,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16149,11 +16134,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beat (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529895793476219449, guid: 39db7e2f39c66674e98624b1df63e804,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.089
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39db7e2f39c66674e98624b1df63e804, type: 3}

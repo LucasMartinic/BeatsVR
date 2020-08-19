@@ -5,10 +5,11 @@ public class Bar : MonoBehaviour
     [SerializeField] GameObject blue;
     [SerializeField] GameObject yellow;
     [SerializeField] GameObject fillEfect;
+    MeshRenderer fillRenderer;
+    ParticleSystem fillParticles;
     [SerializeField] int bars = 1;
     [SerializeField] GameObject[] beats = new GameObject[16];
     float filler = 0;
-    MeshRenderer fillRenderer;
     public int barsCompleted;
     Vector3 distance;
     [SerializeField] CylinderBetweenTwoPoints cylinderProcedural;
@@ -29,6 +30,7 @@ public class Bar : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         fillRenderer = fillEfect.GetComponentInChildren<MeshRenderer>();
+        fillParticles = fillEfect.GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class Bar : MonoBehaviour
 
         if(myTurn && readyToFill)
         {
+            if (!fillParticles.isPlaying) fillParticles.Play();
             FillMeter();
             if (firstFrame) return;
             if (BPM._beatD16)
@@ -60,6 +63,7 @@ public class Bar : MonoBehaviour
         else
         {
             fillRenderer.enabled = false;
+            fillParticles.Stop();
         }
 
     }
@@ -103,6 +107,7 @@ public class Bar : MonoBehaviour
             myTurn = false;
             GetFirstBar(this).SetTurn(true);
         }
+        fillParticles.Stop();
     }
 
     public void SetTurn(bool b)
