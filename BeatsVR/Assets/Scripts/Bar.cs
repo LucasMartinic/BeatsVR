@@ -18,6 +18,7 @@ public class Bar : MonoBehaviour
     public bool hasBarAfter;
     public Bar beforeBar;
     public Bar afterBar;
+    bool single = true;
 
     public bool myTurn;
     bool firstFrame = true;
@@ -29,7 +30,15 @@ public class Bar : MonoBehaviour
 
     void Update()
     {
-        if(!hasBarBefore && !hasBarAfter && myTurn)
+        if (!hasBarAfter && !hasBarBefore) single = true;
+        else single = false;
+
+        if (BPM._beatFull)
+        {
+            CheckIfCandidate();
+        }
+
+        if(myTurn)
         {
             FillMeter();
             if (firstFrame) return;
@@ -45,23 +54,12 @@ public class Bar : MonoBehaviour
                 }
             }
         }
-        else if(myTurn)
-        {
-            FillMeter();
-            if (firstFrame) return;
-            if (BPM._beatD16)
-            {
-                PlayNextSound();
-                barsCompleted++;
-                if (barsCompleted >= bars)
-                {
-                    filler = 0;
-                    barsCompleted = 0;
-                    FinishTurn();
-                }
-            }
-        }
-        else if(!myTurn && !hasBarBefore && !hasBarAfter && BPM._beatFull)
+
+    }
+
+    void CheckIfCandidate()
+    {
+        if (single)
         {
             myTurn = true;
         }
@@ -80,7 +78,8 @@ public class Bar : MonoBehaviour
 
     void FinishTurn()
     {
-        if (hasBarAfter)
+        myTurn = false;
+        if (hasBarAfter && afterBar!= null)
         {
             myTurn = false;
             afterBar.SetTurn(true);
@@ -98,10 +97,24 @@ public class Bar : MonoBehaviour
         firstFrame = true;
     }
 
+    void StartFromBegining()
+    {
+        GetFirstBar(this).SetTurn(true);
+    }
+
+    public void ResetBar()
+    {
+        filler = 0;
+        barsCompleted = 0;
+        fillEfect.transform.localPosition = new Vector3(0f, 0.774f, 0.18f);
+    }
+
     Bar GetFirstBar(Bar currentBar)
     {
         if (currentBar.hasBarBefore && currentBar.beforeBar != null)
         {
+            currentBar.ResetBar();
+            currentBar.SetTurn(false);
             return GetFirstBar(currentBar.beforeBar);
         }
         else
@@ -115,7 +128,7 @@ public class Bar : MonoBehaviour
         distance = blue.transform.position - yellow.transform.position;
         fillEfect.transform.up = distance;
         filler += Time.deltaTime;
-        fillEfect.transform.position = Vector3.Lerp(cylinderProcedural.attachPoints[0].transform.position, cylinderProcedural.attachPoints[16].transform.position, filler * BPM.instance._bpm / 60.0f);
+        fillEfect.transform.position = Vector3.Lerp(yellow.transform.position, blue.transform.position, filler * BPM.instance._bpm / 60.0f);
     }
 
     public void OnTrigger(Vector3 contactPos, GameObject obj)
@@ -160,6 +173,7 @@ public class Bar : MonoBehaviour
             hasBarBefore = true;
             beforeBar = bar;
         }
+        StartFromBegining();
     }
 
     public void DisconnectBefore(Bar bar)
@@ -178,6 +192,7 @@ public class Bar : MonoBehaviour
             hasBarAfter = true;
             afterBar = bar;
         }
+        StartFromBegining();
     }
 
     public void DisconnectAfter(Bar bar)
