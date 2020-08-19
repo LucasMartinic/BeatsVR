@@ -10,7 +10,7 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
     [SerializeField] private GameObject rightSphere;
     private GameObject cylinder;
     public GameObject[] attachPoints = new GameObject[17];
-    [SerializeField] Beat beat;
+    [SerializeField] Bar bar;
 
     private void Start () {
         InstantiateCylinder(cylinderPrefab, initialPoint.transform.position, rightSphere.transform.position);
@@ -23,11 +23,11 @@ public class CylinderBetweenTwoPoints : MonoBehaviour {
     private void InstantiateCylinder(Transform cylinderPrefab, Vector3 beginPoint, Vector3 endPoint)
     {
         cylinder = Instantiate<GameObject>(cylinderPrefab.gameObject, Vector3.zero, Quaternion.identity);
-        cylinder.transform.SetParent(beat.transform);
+        cylinder.transform.SetParent(bar.transform);
         UpdateCylinderPosition(cylinder, beginPoint, endPoint);
 
         CreateAttachPoints();
-        beat.cylinderObject = cylinder;
+        bar.cylinderObject = cylinder;
     }
 
     private void UpdateCylinderPosition(GameObject cylinder, Vector3 beginPoint, Vector3 endPoint)

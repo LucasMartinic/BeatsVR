@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Blue : MonoBehaviour
 {
-    Beat beat;
+    Bar bar;
     // Start is called before the first frame update
     void Start()
     {
-        beat = GetComponentInParent<Beat>();
+        bar = GetComponentInParent<Bar>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Yellow"))
         {
-            beat.ConnectAfter(beat);
+            bar.ConnectAfter(bar);
         }
     }
 
@@ -23,7 +23,7 @@ public class Blue : MonoBehaviour
     {
         if (other.CompareTag("Yellow"))
         {
-            beat.DisconnectAfter(beat);
+            bar.DisconnectAfter(bar);
         }
     }
 }
